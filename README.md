@@ -19,7 +19,7 @@ Results Visualization:
 The detected tumor regions are highlighted in the output MRI images using bounding circles. The model classifies the image and displays the result along with the confidence score.
 
 Git Clone:
-git clone https://github.com/ujwalreddybattu04/Brain-Tumor-Detection-Using-2D-CNN.git
+git clone https://github.com/ujwalreddybattu04/Brain-Tumor-Detection.git
 
 Dataset Source:
 The dataset was obtained from the Kaggle Brain Tumor MRI Dataset which contains MRI images of brain scans labeled with four categories.
