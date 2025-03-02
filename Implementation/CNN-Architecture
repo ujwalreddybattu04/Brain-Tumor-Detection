@@ -1,0 +1,33 @@
+import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# Build 2D CNN Model for 4-Class Classification
+def build_cnn_model():
+    model = tf.keras.models.Sequential()
+    
+    # First Convolutional Block
+    model.add(tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(img_size[0], img_size[1], 3)))
+    model.add(tf.keras.layers.MaxPooling2D((2, 2)))
+    
+    # Second Convolutional Block
+    model.add(tf.keras.layers.Conv2D(64, (3, 3), activation='relu'))
+    model.add(tf.keras.layers.MaxPooling2D((2, 2)))
+    
+    # Third Convolutional Block
+    model.add(tf.keras.layers.Conv2D(128, (3, 3), activation='relu'))
+    model.add(tf.keras.layers.MaxPooling2D((2, 2)))
+    
+    # Flatten and Fully Connected Layers
+    model.add(tf.keras.layers.Flatten())
+    model.add(tf.keras.layers.Dense(128, activation='relu'))
+    model.add(tf.keras.layers.Dropout(0.5))
+    model.add(tf.keras.layers.Dense(num_classes, activation='softmax'))  # 4-class output
+    
+    # Compile the model for one-hot encoded labels
+    model.compile(optimizer='adam',
+                  loss='categorical_crossentropy',
+                  metrics=['accuracy'])
+    return model
+# Model Summary
+model = build_cnn_model()
+model.summary()
